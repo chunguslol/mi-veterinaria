@@ -17,5 +17,14 @@ app.use(express.json());
 // Routes
 app.use("/api/pets", require("./routes/pet.routes"));
 
+app.get("/", (req, res) => {
+    res.send("Backend funcionando correctamente.");
+  });
+  
+  // Manejo de errores para rutas no encontradas
+  app.use((req, res, next) => {
+    res.status(404).json({ message: "Ruta no encontrada." });
+  });
+
 module.exports = app;
 
